@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insertar Datos</title>
+</head>
+<body>
+
+  <h1>Insertar Datos</h1>
+
+  <form id="dataForm">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Correo Electrónico:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="age">Edad:</label>
+    <input type="number" id="age" name="age" required>
+
+    <label for="hobbies">Pasatiempos (separados por comas):</label>
+    <input type="text" id="hobbies" name="hobbies">
+
+    <button type="button" onclick="insertData()">Insertar Datos</button>
+  </form>
+
+  <script>
+    async function insertData() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const age = document.getElementById('age').value;
+      const hobbies = document.getElementById('hobbies').value.split(',').map(item => item.trim());
+
+      const response = await fetch('http://localhost:3000/insertar-datos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, age, hobbies }),
+      });
+
+      const result = await response.text();
+      alert(result);
+    }
+  </script>
+
+</body>
+</html>
