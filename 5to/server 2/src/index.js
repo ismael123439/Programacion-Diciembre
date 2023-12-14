@@ -3,6 +3,8 @@ import { dirname , join} from 'path'
 import { fileURLToPath } from "url";
 import path from "path";
 
+// npx nodemon src/index.js
+
 import indexRoutes from './routes/routes.js' //importa las rutas desde routes.js
 
 const app = express()
