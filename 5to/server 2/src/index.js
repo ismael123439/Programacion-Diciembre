@@ -15,7 +15,7 @@ app.set("views", join(__dirname,'views')); //motor de vistas
 
 app.use(indexRoutes);//rutas
 
-app.use(express.static(path.join(__dirname, 'public/mian.css'))); // direccion de los archivos estaticos
+app.use(express.static(path.join(__dirname, 'public'))); // direccion de los archivos estaticos
 
 
 app.listen(3000)
